@@ -24,7 +24,7 @@ public class HotelBookingManager {
 
 		for (int i = 0; i < Hotel.getLength(); i++) {
 
-			if (hotel[i].getStarRating() == starRating && maxAmount >= hotel[i].getTotalCost()) {
+			if (hotel[i].getStarRating() == starRating) {
 				filteredHotels.add(hotel[i]);
 			}
 
@@ -45,7 +45,7 @@ public class HotelBookingManager {
 		Collections.sort(filterTotalCost);
 
 		for (Hotel pickHotel : filteredHotels) {
-			if (pickHotel.getTotalCost() == filterTotalCost.get(0)) {
+			if (pickHotel.getTotalCost() == filterTotalCost.get(0) && pickHotel.getTotalCost() <= maxAmount) {
 				bookedHotel = pickHotel;
 				bookingStatus = true;
 			}
