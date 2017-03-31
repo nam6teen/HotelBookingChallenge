@@ -36,9 +36,10 @@ public class MainController {
 		out.println("Enter the Star Rating : ");
 		do {
 			starRating = input.nextInt();
-			if (starRating != 1 || starRating != 3 || starRating != 5)
+			if (starRating != 1 && starRating != 3 && starRating != 5)
 				out.println("Enter 1, 3 or 5 ");
-		} while (starRating != 1 || starRating != 3 || starRating != 5);
+		} while (starRating != 1 && starRating != 3 && starRating != 5);
+
 		out.println("Enter the Maximum Amount : ");
 		maxAmount = input.nextDouble();
 

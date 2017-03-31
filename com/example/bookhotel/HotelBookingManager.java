@@ -24,13 +24,15 @@ public class HotelBookingManager {
 
 		for (int i = 0; i < Hotel.getLength(); i++) {
 
-			totalCost = totalCost(numberOfDays, hotel[i].getMinDaysForDiscount(), hotel[i].getDiscount(),
-					hotel[i].getCostPerDay());
-			hotel[i].setTotalCost(totalCost);
-
 			if (hotel[i].getStarRating() == starRating && maxAmount >= hotel[i].getTotalCost()) {
-
 				filteredHotels.add(hotel[i]);
+			}
+
+			for (int j = 0; j < filteredHotels.size(); j++) {
+
+				totalCost = totalCost(numberOfDays, filteredHotels.get(j).getMinDaysForDiscount(),
+						filteredHotels.get(j).getDiscount(), filteredHotels.get(j).getCostPerDay());
+				filteredHotels.get(j).setTotalCost(totalCost);
 			}
 
 		}
@@ -51,7 +53,7 @@ public class HotelBookingManager {
 
 		if (bookingStatus)
 			return "\n" + "Hotel Booked for " + numberOfDays + " days in " + starRating + " star Hotel "
-					+ bookedHotel.getHotelName() + " for the cost of " + bookedHotel.getTotalCost();
+					+ bookedHotel.getHotelName() + " for the cost of $" + bookedHotel.getTotalCost();
 
 		else
 
