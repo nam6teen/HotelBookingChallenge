@@ -19,32 +19,26 @@ public class HotelBookingManager {
 		boolean bookingStatus = false;
 		double totalCost = 0;
 		Hotel[] hotel = MainController.hotel;
+
 		List<Hotel> filteredHotels = new ArrayList<>();
-		List<Double> filterTotalCost = new ArrayList<>();
 
 		for (int i = 0; i < Hotel.getLength(); i++) {
 
 			if (hotel[i].getStarRating() == starRating) {
 				filteredHotels.add(hotel[i]);
-				totalCost = totalCost(numberOfDays, filteredHotels.get(i).getMinDaysForDiscount(),
-						filteredHotels.get(i).getDiscount(), filteredHotels.get(i).getCostPerDay());
-				filteredHotels.get(i).setTotalCost(totalCost);
+				totalCost = totalCost(numberOfDays,
+						filteredHotels.get(filteredHotels.size() - 1).getMinDaysForDiscount(),
+						filteredHotels.get(filteredHotels.size() - 1).getDiscount(),
+						filteredHotels.get(filteredHotels.size() - 1).getCostPerDay());
+				filteredHotels.get(filteredHotels.size() - 1).setTotalCost(totalCost);
 			}
-
 		}
 
-		for (int i = 0; i < filteredHotels.size(); i++) {
+		Collections.sort(filteredHotels);
 
-			filterTotalCost.add(filteredHotels.get(i).getTotalCost());
-		}
-
-		Collections.sort(filterTotalCost);
-
-		for (Hotel pickHotel : filteredHotels) {
-			if (pickHotel.getTotalCost() == filterTotalCost.get(0) && pickHotel.getTotalCost() <= maxAmount) {
-				bookedHotel = pickHotel;
-				bookingStatus = true;
-			}
+		if (filteredHotels.get(0).getTotalCost() <= maxAmount) {
+			bookedHotel = filteredHotels.get(0);
+			bookingStatus = true;
 		}
 
 		if (bookingStatus)

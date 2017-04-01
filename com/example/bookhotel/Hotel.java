@@ -1,13 +1,12 @@
 package com.example.bookhotel;
+
 /**
  * 
- * Namita Anand
- * 30 March 2017
- * HotelBookingChallenge
+ * Namita Anand 30 March 2017 HotelBookingChallenge
  *
  */
 
-public class Hotel {
+public class Hotel implements Comparable<Hotel> {
 
 	private String hotelName;
 	private int starRating;
@@ -78,6 +77,11 @@ public class Hotel {
 
 	public void setTotalCost(double totalCost) {
 		this.totalCost = totalCost;
+	}
+
+	public int compareTo(Hotel hotel) {
+
+		return this.getTotalCost() > hotel.getTotalCost() ? -1 : 1;
 	}
 
 }
