@@ -26,13 +26,9 @@ public class HotelBookingManager {
 
 			if (hotel[i].getStarRating() == starRating) {
 				filteredHotels.add(hotel[i]);
-			}
-
-			for (int j = 0; j < filteredHotels.size(); j++) {
-
-				totalCost = totalCost(numberOfDays, filteredHotels.get(j).getMinDaysForDiscount(),
-						filteredHotels.get(j).getDiscount(), filteredHotels.get(j).getCostPerDay());
-				filteredHotels.get(j).setTotalCost(totalCost);
+				totalCost = totalCost(numberOfDays, filteredHotels.get(i).getMinDaysForDiscount(),
+						filteredHotels.get(i).getDiscount(), filteredHotels.get(i).getCostPerDay());
+				filteredHotels.get(i).setTotalCost(totalCost);
 			}
 
 		}
